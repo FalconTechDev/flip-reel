@@ -5,7 +5,7 @@ React, Vue, Angular, plain HTML), isolates its styles with Shadow DOM, hosts arb
 through a stable adapter contract, and is built to be light and CWV-safe. Architecture and all
 locked design decisions live in [docs/architecture.md](docs/architecture.md).
 
-**Live demo:** <https://flipatic-reels-demo.vercel.app/>
+**Live demo:** <https://flip-reel-demo.vercel.app/>
 
 ## Packages
 

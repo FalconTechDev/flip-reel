@@ -9,7 +9,7 @@ heavily customizable in both look and behavior, host arbitrary ad code, and be l
 broadly cross-browser. Publisher engineering teams will audit it — the bar is "no compromises".
 
 Benchmarks: VG (Norway), NYT video, WP.pl mobile strip.
-UI/UX proof of concept: <https://flip-reel-poc.vercel.app/> (Next.js demo — we ported the
+UI/UX proof of concept: <https://flipatic-reels-poc.vercel.app/> (Next.js demo — we ported the
 **design**, not the code; see [PoC findings](#poc-findings)).
 
 ---

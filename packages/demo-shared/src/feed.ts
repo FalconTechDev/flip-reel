@@ -1,7 +1,7 @@
 import type { Feed, Story } from '@flipatic/flip-reel'
 
 const VIDEO_BASE = 'https://rj0pnqxhhfadsjab.public.blob.vercel-storage.com/videos/'
-const POSTER_BASE = 'https://flip-reel-poc.vercel.app/posters/'
+const POSTER_BASE = 'https://flip-reel-demo.vercel.app/posters/'
 
 function videoStory(
   id: string,
