@@ -5,6 +5,8 @@ React, Vue, Angular, plain HTML), isolates its styles with Shadow DOM, hosts arb
 through a stable adapter contract, and is built to be light and CWV-safe. Architecture and all
 locked design decisions live in [docs/architecture.md](docs/architecture.md).
 
+**Live demo:** <https://flipatic-reels-demo.vercel.app/>
+
 ## Packages
 
 | Package                             | Description                                                                                   |
@@ -14,6 +16,28 @@ locked design decisions live in [docs/architecture.md](docs/architecture.md).
 | `@flipatic/flip-reel-ad-gpt`        | Reference Google Ad Manager ad adapter                                                        |
 | `@flipatic/flip-reel-react`         | React bindings via `@lit/react` (not published yet — web component works natively)            |
 | `apps/{demo,react,vue,nuxt,svelte}` | Publisher-page demos for HTML, React, Vue, Nuxt, and Svelte                                   |
+
+## Installation
+
+With a bundler (npm / pnpm / yarn):
+
+```bash
+npm i @flipatic/flip-reel
+```
+
+`@flipatic/flip-reel-core` is installed automatically as a dependency — add it directly only
+when you build custom adapters or use the headless engine on its own. The Google Ad Manager
+adapter is separate:
+
+```bash
+npm i @flipatic/flip-reel-ad-gpt
+```
+
+Without a bundler, load the ready-made bundle from a CDN (pin the version in production):
+
+```html
+<script type="module" src="https://unpkg.com/@flipatic/flip-reel@0.1.0"></script>
+```
 
 ## Quick start
 
