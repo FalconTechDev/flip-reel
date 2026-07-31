@@ -1,6 +1,6 @@
 import { MediaScheduler } from './media-scheduler'
 
-export const FLIP_REEL_VERSION = '0.1.0'
+export const FLIP_REEL_VERSION = '0.1.1'
 
 const NAMESPACE = '__FLIP_REEL__'
 

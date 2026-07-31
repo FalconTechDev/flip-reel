@@ -3,6 +3,18 @@
 All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the project adheres to [SemVer](https://semver.org/).
 
+## 0.1.1
+
+### Added
+
+- Live demo link and an installation guide in the README.
+
+### Changed
+
+- Releases are published from CI via npm trusted publishing (OIDC) with provenance — no
+  long-lived tokens.
+- Toolchain: pnpm 10.
+
 ## 0.1.0
 
 First public release.
