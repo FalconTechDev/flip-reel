@@ -1,0 +1,56 @@
+{
+  "name": "@flipatic/flip-reel",
+  "version": "0.1.0",
+  "description": "Embeddable stories/reels web component for publishers",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/bundle/flip-reel.js",
+  "module": "./dist/bundle/flip-reel.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/bundle/flip-reel.js"
+    },
+    "./iife": "./dist/bundle/flip-reel.iife.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.build.json --emitDeclarationOnly",
+    "dev": "concurrently -k -n vite,types -c blue,green \"vite build --watch\" \"tsc -p tsconfig.build.json --emitDeclarationOnly --watch\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@flipatic/flip-reel-core": "workspace:^",
+    "lit": "^3.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5",
+    "vitest": "^2.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/autentika/flip-reel.git",
+    "directory": "packages/reels"
+  },
+  "homepage": "https://github.com/autentika/flip-reel#readme",
+  "bugs": "https://github.com/autentika/flip-reel/issues",
+  "author": "Autentika",
+  "keywords": [
+    "reels",
+    "stories",
+    "web-component",
+    "lit",
+    "embeddable",
+    "ads",
+    "publisher"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

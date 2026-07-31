@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>FlipReel — demo</title>
+    <meta
+      name="description"
+      content="Live demo of FlipReel — an open-source, embeddable stories/reels widget for publishers."
+    />
+    <link rel="icon" type="image/svg+xml" href="/brand/flip-reel-logo.svg" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="FlipReel — demo" />
+    <meta
+      property="og:description"
+      content="An open-source, embeddable stories/reels widget for publishers."
+    />
+    <style>
+      :root {
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          sans-serif;
+        color: #171717;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #ffffff;
+        -webkit-font-smoothing: antialiased;
+      }
+      .site-header {
+        border-bottom: 1px solid #ededed;
+      }
+      .site-header__inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand img {
+        display: block;
+        height: 28px;
+        width: auto;
+      }
+      .site-nav {
+        display: flex;
+        gap: 20px;
+        font-size: 14px;
+        color: #525252;
+      }
+      main {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+      }
+      .lede {
+        max-width: 60ch;
+        color: #525252;
+        line-height: 1.6;
+        margin-bottom: 40px;
+      }
+      .reels-section {
+        margin-top: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand"><img src="/brand/autentika.svg" alt="Autentika" /></div>
+        <nav class="site-nav">
+          <span>Poland</span><span>World</span><span>Sport</span><span>Culture</span>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <p class="lede">
+        A publisher page hosting the embeddable FlipReel widget. Hover a card to preview, click to
+        open the full-screen player with categories, ads and interactions.
+      </p>
+      <section class="reels-section">
+        <div id="reels"></div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+# Changelog
+
+All notable changes to this project are documented here. The format follows
+[Keep a Changelog](https://keepachangelog.com/), and the project adheres to [SemVer](https://semver.org/).
+
+## 0.1.0
+
+First public release.
+
+### Added
+
+- `@flipatic/flip-reel-core` — headless engine: config resolver, feed loading/normalization,
+  player state machine, page-global `MediaScheduler`, state store.
+- `@flipatic/flip-reel` — Lit web components (`flip-reel`, `flip-reel-rail`,
+  `flip-reel-player`) with open Shadow DOM, design tokens, and `pl`/`en` i18n.
+- `@flipatic/flip-reel-ad-gpt` — reference Google Ad Manager ad adapter.
+- Ads run as a view-gated pre-roll overlay pulled out of the feed — an ad occupies every Nth
+  viewed slide, counting from the opening story — with an `AdAdapter` contract for arbitrary
+  ad code.
+- Drop-in (`<flip-reel>`) and programmatic (`mount`) integration; framework demos for HTML,
+  React, Vue, Nuxt, and Svelte.

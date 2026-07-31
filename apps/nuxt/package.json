@@ -1,0 +1,18 @@
+{
+  "name": "@flipatic/flip-reel-demo-nuxt",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@flipatic/flip-reel-demo-shared": "workspace:^",
+    "@flipatic/flip-reel": "workspace:^",
+    "nuxt": "^3.15.4",
+    "vue": "^3.5.13"
+  }
+}
