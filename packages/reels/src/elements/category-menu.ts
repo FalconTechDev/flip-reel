@@ -22,7 +22,7 @@ export class FlipReelCategoryMenu extends LitElement {
       align-items: center;
       min-width: 0;
       max-width: 100%;
-      padding: 4px;
+      padding: 4px 0;
       border-radius: var(--flip-reel-radius-pill, 9999px);
       background: var(--flip-reel-control-bg, rgba(23, 23, 23, 0.8));
       -webkit-backdrop-filter: blur(12px);
@@ -76,6 +76,12 @@ export class FlipReelCategoryMenu extends LitElement {
       background: transparent;
       color: var(--flip-reel-alpha-white-70, rgba(255, 255, 255, 0.7));
       transition: color 0.2s ease;
+    }
+    .seg:first-of-type {
+      margin-inline-start: 4px;
+    }
+    .seg:last-of-type {
+      margin-inline-end: 4px;
     }
     .seg:hover {
       color: var(--flip-reel-on-surface, #ffffff);
