@@ -27,8 +27,6 @@ class GptAdAdapter implements AdAdapter {
     slotElement.style.height = '100%'
     context.container.appendChild(slotElement)
 
-    // Resolve once GPT reports the render outcome: null on no-fill so the widget
-    // can silently skip the break, a handle when a creative actually rendered.
     return new Promise<AdHandle | null>((resolve) => {
       googletag.cmd.push(() => {
         const slot = googletag.defineSlot(

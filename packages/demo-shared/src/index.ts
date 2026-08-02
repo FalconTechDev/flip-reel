@@ -5,8 +5,6 @@ import { createHouseAdAdapter } from './house-ad'
 export { demoFeed } from './feed'
 export { createHouseAdAdapter } from './house-ad'
 
-/** Shared widget options used by every framework demo, so each example stays
- *  focused on the framework wiring rather than re-declaring the config. */
 export function createDemoOptions(overrides: Partial<FlipReelOptions> = {}): FlipReelOptions {
   return {
     feed: demoFeed,

@@ -34,9 +34,6 @@ export class FlipReelReels extends LitElement {
   }
 
   willUpdate(changed: PropertyValues): void {
-    // Frameworks (React/Vue/Svelte) set the `options` property after the element
-    // is connected, so connectedCallback ran before it existed. Bootstrap when the
-    // property lands. The synchronous `this.widget` guard keeps it single-shot.
     if (changed.has('options') && !this.widget) void this.bootstrap()
   }
 

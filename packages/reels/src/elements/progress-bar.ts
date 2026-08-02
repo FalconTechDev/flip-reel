@@ -44,8 +44,6 @@ export class FlipReelProgressBar extends LitElement {
   }
 
   private emitSeek(fraction: number): void {
-    // ponytail: optimistic fill; the progress ticker may briefly overwrite value, but the
-    // parent's onSeek moves currentTime so it converges within a frame.
     this.value = fraction
     this.dispatchEvent(new CustomEvent('seek', { detail: fraction, bubbles: true, composed: true }))
   }
