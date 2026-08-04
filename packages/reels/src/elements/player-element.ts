@@ -18,6 +18,10 @@ import './ad-slide'
 
 const SETTLE_DELAY_MS = 110
 const AUTO_ADVANCE_SCROLL_GUARD_MS = 200
+const WHEEL_GAIN = 2.5
+const WHEEL_LINE_PX = 40
+const WHEEL_END_MS = 150
+const WHEEL_ADVANCE_MIN_PX = 12
 
 @customElement('flip-reel-player')
 export class FlipReelPlayer extends LitElement {
@@ -49,6 +53,9 @@ export class FlipReelPlayer extends LitElement {
   private mediaTapTimer = 0
   private burstSeq = 0
   private burstTimer = 0
+  private pendingStep: 1 | -1 | 0 = 0
+  private wheelGlideOrigin = -1
+  private wheelEndTimer = 0
   private readonly wheelRouter = new WheelInputRouter()
   private readonly scrollDriver = new ReelScrollDriver({
     scroller: () => this.renderRoot.querySelector<HTMLElement>('.scroller'),
@@ -67,6 +74,7 @@ export class FlipReelPlayer extends LitElement {
     this.ticker.stop()
     window.clearTimeout(this.settleTimer)
     window.clearTimeout(this.mediaTapTimer)
+    window.clearTimeout(this.wheelEndTimer)
     window.clearTimeout(this.burstTimer)
     this.scrollDriver.destroy()
     this.own?.destroy()
@@ -191,22 +199,72 @@ export class FlipReelPlayer extends LitElement {
       return
     }
     if (route === 'native') {
+      this.pendingStep = 0
       if (this.scrollDriver.isAnimating) this.scrollDriver.cancel()
       return
     }
     event.preventDefault()
-    if (route === 'step') this.stepBy(event.deltaY > 0 ? 1 : -1)
+    if (route !== 'step') return
+    const px = event.deltaMode === 0 ? event.deltaY : event.deltaY * WHEEL_LINE_PX
+    this.glideBy(px * WHEEL_GAIN)
+  }
+
+  private glideBy(delta: number): void {
+    const scroller = this.renderRoot.querySelector<HTMLElement>('.scroller')
+    const snap = this.snapshot
+    if (!scroller || !snap) return
+    if (this.scrollDriver.isAnimating) this.scrollDriver.cancel()
+    if (this.wheelGlideOrigin < 0) {
+      this.wheelGlideOrigin = this.scrollDriver.nearestIndex(snap.activeIndex)
+    }
+    scroller.style.scrollSnapType = 'none'
+    scroller.scrollTop += delta
+    this.scrollDriver.updateFade()
+    window.clearTimeout(this.wheelEndTimer)
+    this.wheelEndTimer = window.setTimeout(() => this.endWheelGlide(), WHEEL_END_MS)
+  }
+
+  private endWheelGlide(): void {
+    const origin = this.wheelGlideOrigin
+    this.wheelGlideOrigin = -1
+    const scroller = this.renderRoot.querySelector<HTMLElement>('.scroller')
+    const snap = this.snapshot
+    if (!scroller || !snap || origin < 0) return
+    if (snap.ad.active) {
+      scroller.style.removeProperty('scroll-snap-type')
+      return
+    }
+    let target = this.scrollDriver.nearestIndex(snap.activeIndex)
+    if (target === origin) {
+      const drift = scroller.scrollTop - this.scrollDriver.snapTop(origin)
+      if (Math.abs(drift) > WHEEL_ADVANCE_MIN_PX) target = origin + Math.sign(drift)
+    }
+    target = Math.max(0, Math.min(snap.stories.length - 1, target))
+    this.scrollDriver.animateTo(target, () => this.controller?.notifyLanded(target))
   }
 
   private stepBy(direction: 1 | -1): void {
     const snap = this.snapshot
-    if (!snap || snap.ad.active) return
-    const from = this.scrollDriver.isAnimating
-      ? this.scrollDriver.animationTarget
-      : this.scrollDriver.nearestIndex(snap.activeIndex)
+    if (!snap || snap.ad.active) {
+      this.pendingStep = 0
+      return
+    }
+    if (this.scrollDriver.isAnimating) {
+      this.pendingStep = direction
+      return
+    }
+    const from = this.scrollDriver.nearestIndex(snap.activeIndex)
     const target = from + direction
-    if (target < 0 || target >= snap.stories.length) return
-    this.scrollDriver.animateTo(target, () => this.controller?.notifyLanded(target))
+    if (target < 0 || target >= snap.stories.length) {
+      this.pendingStep = 0
+      return
+    }
+    this.scrollDriver.animateTo(target, () => {
+      this.controller?.notifyLanded(target)
+      const queued = this.pendingStep
+      this.pendingStep = 0
+      if (queued) this.stepBy(queued)
+    })
   }
 
   private scheduleSettle(): void {
@@ -215,6 +273,7 @@ export class FlipReelPlayer extends LitElement {
   }
 
   private onSettle(): void {
+    if (this.wheelGlideOrigin >= 0) return
     const snap = this.snapshot
     if (!snap || snap.ad.active || this.scrollDriver.isAnimating) return
     const index = this.scrollDriver.nearestIndex(snap.activeIndex)
