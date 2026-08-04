@@ -25,5 +25,14 @@ A change isn't done while any of these fail.
 
 ## Releasing
 
-Bump versions, update [CHANGELOG.md](CHANGELOG.md), then publish the public packages
-(`pnpm -r --filter "./packages/*" publish --access public`).
+Add a `## x.y.z` section to [CHANGELOG.md](CHANGELOG.md), then run:
+
+```bash
+pnpm release patch
+```
+
+The script (`scripts/release.mjs`) bumps every workspace version, the runtime version constant
+and the README install snippet, runs lint + typecheck + tests + build, and creates the
+`chore: release x.y.z` commit with a `vx.y.z` tag. It never pushes — review, then
+`git push origin main && git push origin vx.y.z`. The tag push triggers the release workflow,
+which publishes the public packages to npm via trusted publishing.
