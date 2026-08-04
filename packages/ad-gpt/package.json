@@ -1,6 +1,6 @@
 {
   "name": "@flipatic/flip-reel-ad-gpt",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Google Ad Manager (GPT) ad adapter for FlipReel",
   "license": "Apache-2.0",
   "type": "module",

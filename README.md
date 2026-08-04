@@ -36,7 +36,7 @@ npm i @flipatic/flip-reel-ad-gpt
 Without a bundler, load the ready-made bundle from a CDN (pin the version in production):
 
 ```html
-<script type="module" src="https://unpkg.com/@flipatic/flip-reel@0.1.1"></script>
+<script type="module" src="https://unpkg.com/@flipatic/flip-reel@0.1.2"></script>
 ```
 
 ## Quick start
