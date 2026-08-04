@@ -3,6 +3,19 @@
 All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the project adheres to [SemVer](https://semver.org/).
 
+## 0.1.2
+
+### Fixed
+
+- Mouse wheel scrolls the player continuously, like a trackpad (including macOS-accelerated
+  and high-resolution wheels).
+- Active category pill fills the capsule ends when the category bar is scrolled.
+
+### Added
+
+- Source maps in published bundles.
+- `pnpm release` script.
+
 ## 0.1.1
 
 ### Added
