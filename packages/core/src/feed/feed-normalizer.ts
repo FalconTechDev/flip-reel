@@ -13,6 +13,20 @@ function isStory(value: unknown): value is Story {
   return hasIdentity && hasMedia
 }
 
+function safeLink(value: unknown): string | undefined {
+  if (typeof value !== 'string') return undefined
+  try {
+    const protocol = new URL(value, 'https://feed.invalid').protocol
+    return protocol === 'http:' || protocol === 'https:' ? value : undefined
+  } catch {
+    return undefined
+  }
+}
+
+function sanitizeStory(story: Story): Story {
+  return { ...story, link: safeLink(story.link) }
+}
+
 function deriveCategories(stories: Story[], allLabel: string): Category[] {
   const seen = new Map<string, Category>()
   for (const story of stories) {
@@ -30,7 +44,7 @@ export function normalizeFeed(raw: unknown, allLabel: string, override?: Categor
     throw new FeedLoadError('Feed must contain a "stories" array')
   }
 
-  const stories = rawStories.filter(isStory)
+  const stories = rawStories.filter(isStory).map(sanitizeStory)
   if (stories.length === 0) {
     throw new FeedLoadError('Feed does not contain any valid stories')
   }
