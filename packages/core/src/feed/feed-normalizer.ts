@@ -1,6 +1,7 @@
 import { FeedLoadError } from '../config/config-errors'
 import type { Category, Feed, Story } from '../types/story'
 
+/** Id of the synthetic category matching every story. */
 export const ALL_CATEGORY_ID = 'all'
 
 function isStory(value: unknown): value is Story {
@@ -37,6 +38,16 @@ function deriveCategories(stories: Story[], allLabel: string): Category[] {
   return [{ id: ALL_CATEGORY_ID, label: allLabel }, ...seen.values()]
 }
 
+/**
+ * Validates a raw feed payload into a {@link Feed}: drops malformed stories,
+ * strips unsafe (non-http) story links, and ensures a category list headed by
+ * the "all" category.
+ *
+ * @param raw - Parsed feed JSON: a feed object or a bare story array.
+ * @param allLabel - Localized label for the "all" category.
+ * @param override - Explicit categories replacing feed-provided or derived ones.
+ * @throws FeedLoadError when no valid story remains.
+ */
 export function normalizeFeed(raw: unknown, allLabel: string, override?: Category[]): Feed {
   const source = (Array.isArray(raw) ? { stories: raw } : raw) as Partial<Feed> | null
   const rawStories = source?.stories
@@ -57,6 +68,7 @@ export function normalizeFeed(raw: unknown, allLabel: string, override?: Categor
   return { stories, categories: withAll }
 }
 
+/** Returns the stories belonging to a category; the "all" category returns everything. */
 export function filterByCategory(stories: Story[], categoryId: string): Story[] {
   if (categoryId === ALL_CATEGORY_ID) return stories
   return stories.filter((story) => story.category === categoryId)

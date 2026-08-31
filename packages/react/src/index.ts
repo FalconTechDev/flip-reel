@@ -9,6 +9,13 @@ function eventName<K extends FlipReelEventName>(
   return name as EventName<CustomEvent<FlipReelEventMap[K]>>
 }
 
+/**
+ * React wrapper for `<flip-reel>` — the complete widget. Pass
+ * {@link FlipReelOptions} via `options`; every `flip-reel:*` event is exposed
+ * as a typed `on*` prop receiving a `CustomEvent` (widget errors arrive on
+ * `onReelsError`, since `onError` is a native React handler). Calling
+ * `event.preventDefault()` in `onReadMore` stops the link navigation.
+ */
 export const Reels = createComponent({
   tagName: 'flip-reel',
   elementClass: FlipReelReels,
@@ -32,12 +39,14 @@ export const Reels = createComponent({
   },
 })
 
+/** React wrapper for `<flip-reel-rail>` — the standalone card rail. */
 export const Rail = createComponent({
   tagName: 'flip-reel-rail',
   elementClass: FlipReelRail,
   react: React,
 })
 
+/** React wrapper for `<flip-reel-player>` — the standalone full-screen player. */
 export const Player = createComponent({
   tagName: 'flip-reel-player',
   elementClass: FlipReelPlayer,

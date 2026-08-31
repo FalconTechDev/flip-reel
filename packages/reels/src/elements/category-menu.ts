@@ -2,6 +2,10 @@ import { LitElement, css, html, nothing } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import type { Category } from '@flipatic/flip-reel-core'
 
+/**
+ * `<flip-reel-category-menu>` — scrollable category pill bar of the player.
+ * Emits a `category-change` event with the selected category id.
+ */
 @customElement('flip-reel-category-menu')
 export class FlipReelCategoryMenu extends LitElement {
   @property({ attribute: false }) categories: Category[] = []

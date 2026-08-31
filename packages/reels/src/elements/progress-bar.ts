@@ -1,6 +1,10 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
+/**
+ * `<flip-reel-progress-bar>` — seekable playback progress bar. `value` is the
+ * played fraction (0–1); emits a `seek` event with the target fraction.
+ */
 @customElement('flip-reel-progress-bar')
 export class FlipReelProgressBar extends LitElement {
   @property({ type: Number }) value = 0

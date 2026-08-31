@@ -12,14 +12,26 @@ const SCROLL_DURATION = 25
 const SCROLL_FRICTION = 0.68
 const FIXED_STEP_MS = 1000 / 60
 
+/**
+ * `<flip-reel-rail>` — the standalone horizontal card rail. Bootstraps its own
+ * widget from attributes when used without a parent `<flip-reel>`. Emits an
+ * `open` event with the clicked story id.
+ */
 @customElement('flip-reel-rail')
 export class FlipReelRail extends LitElement {
+  /** Stories to render as cards. */
   @property({ attribute: false }) stories: Story[] = []
+  /** Playback scheduler shared with the rest of the page. */
   @property({ attribute: false }) scheduler?: MediaScheduler
+  /** Widget configuration for standalone bootstrapping. */
   @property({ attribute: false }) options?: FlipReelOptions
+  /** Heading above the rail; empty string hides it. */
   @property() heading: string | null = null
+  /** How long a hovered card plays its muted preview, in milliseconds. */
   @property({ type: Number, attribute: 'preview-ms' }) previewMs = 2000
+  /** Maximum number of cards rendered. */
   @property({ type: Number, attribute: 'max-visible' }) maxVisible = 10
+  /** Number of cards one arrow click scrolls by. */
   @property({ type: Number, attribute: 'scroll-by' }) scrollStep = 4
 
   @state() private canLeft = false

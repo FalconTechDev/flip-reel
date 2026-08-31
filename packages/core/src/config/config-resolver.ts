@@ -13,6 +13,11 @@ function atLeast(value: number | undefined, fallback: number, min: number): numb
   return Math.max(min, candidate)
 }
 
+/**
+ * Applies defaults and minimum clamps to raw {@link FlipReelOptions}.
+ *
+ * @throws FlipReelConfigError when no feed source is given.
+ */
 export function resolveConfig(options: FlipReelOptions): ResolvedConfig {
   if (!options || options.feed === undefined || options.feed === null) {
     throw new FlipReelConfigError('A "feed" source is required')

@@ -1,3 +1,4 @@
+/** Thrown when {@link FlipReelOptions} are invalid, e.g. the feed source is missing. */
 export class FlipReelConfigError extends Error {
   constructor(message: string) {
     super(message)
@@ -5,6 +6,7 @@ export class FlipReelConfigError extends Error {
   }
 }
 
+/** Thrown when the feed cannot be fetched or contains no valid stories. */
 export class FeedLoadError extends Error {
   constructor(message: string) {
     super(message)

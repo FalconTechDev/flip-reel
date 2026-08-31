@@ -39,6 +39,11 @@ const FORWARDED_EVENTS: FlipReelEventName[] = [
 
 const CANCELABLE_EVENTS = new Set<FlipReelEventName>(['flip-reel:readmore'])
 
+/**
+ * One widget instance behind a host element: resolves config, loads the feed,
+ * owns the {@link PlayerController}, and forwards bus events to the host as
+ * bubbling `flip-reel:*` `CustomEvent`s (`flip-reel:readmore` cancelable).
+ */
 export class WidgetController {
   readonly config: ResolvedConfig
   readonly events = new EventBus<FlipReelEventMap>()

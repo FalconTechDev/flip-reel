@@ -1,5 +1,6 @@
 import type { Story } from '../types/story'
 
+/** Ad-break portion of the {@link PlayerState} snapshot. */
 export interface AdState {
   active: boolean
   skippable: boolean
@@ -9,6 +10,7 @@ export interface AdState {
   durationMs: number
 }
 
+/** Immutable snapshot of the player, delivered to every subscriber on change. */
 export interface PlayerState {
   open: boolean
   categoryId: string

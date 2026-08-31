@@ -23,10 +23,18 @@ const WHEEL_LINE_PX = 40
 const WHEEL_END_MS = 150
 const WHEEL_ADVANCE_MIN_PX = 12
 
+/**
+ * `<flip-reel-player>` — the full-screen dialog player. Usually driven by a
+ * parent `<flip-reel>`, but can bootstrap its own widget from attributes and
+ * open at the story given by `start`.
+ */
 @customElement('flip-reel-player')
 export class FlipReelPlayer extends LitElement {
+  /** Widget instance shared with the parent element. */
   @property({ attribute: false }) widget?: WidgetController
+  /** Widget configuration for standalone bootstrapping. */
   @property({ attribute: false }) options?: FlipReelOptions
+  /** Story id to open immediately after standalone bootstrapping. */
   @property() start?: string
 
   @state() private snapshot?: PlayerState

@@ -1,5 +1,6 @@
 import type { Story } from '../types/story'
 
+/** Cursor over an ordered story list, with optional wrap-around. */
 export class PlaylistModel {
   private stories: Story[] = []
   private cursor = 0

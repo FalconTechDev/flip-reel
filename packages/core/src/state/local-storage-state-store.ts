@@ -3,6 +3,11 @@ import type { StateStore } from '../types/adapters'
 
 const PREFIX = 'flip-reel:v1:'
 
+/**
+ * {@link StateStore} backed by `localStorage` under a versioned `flip-reel:v1:`
+ * prefix. Falls back to an in-memory store when `localStorage` is unavailable
+ * and swallows quota or serialization errors.
+ */
 export function createLocalStorageStateStore(): StateStore {
   if (typeof localStorage === 'undefined') {
     return new MemoryStateStore()

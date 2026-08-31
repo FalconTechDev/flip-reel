@@ -3,10 +3,21 @@ import type { GptSlot, GptSlotRenderEndedEvent } from './googletag'
 
 const DEFAULT_SCRIPT = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js'
 
+/** Options for {@link createGptAdAdapter}. */
 export interface GptAdapterOptions {
+  /** Google Ad Manager ad unit path, e.g. `/1234567/flip-reel`. */
   adUnitPath: string
+  /**
+   * Creative sizes requested from GAM.
+   * @defaultValue [[300, 250]]
+   */
   sizes?: Array<[number, number]>
+  /**
+   * URL the GPT library is loaded from.
+   * @defaultValue the official Google-hosted gpt.js
+   */
   scriptUrl?: string
+  /** Key-value targeting applied to the slot. */
   targeting?: Record<string, string | string[]>
 }
 
@@ -95,6 +106,11 @@ class GptAdAdapter implements AdAdapter {
   }
 }
 
+/**
+ * Creates the reference Google Ad Manager (GPT) ad adapter: loads gpt.js on
+ * first request, renders one slot per ad break, and reports empty responses
+ * as no-fill so the widget can dismiss the break.
+ */
 export function createGptAdAdapter(options: GptAdapterOptions): AdAdapter {
   return new GptAdAdapter(options)
 }

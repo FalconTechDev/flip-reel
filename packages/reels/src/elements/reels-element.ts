@@ -7,8 +7,14 @@ import { tokens } from '../styles/tokens'
 import './rail-element'
 import './player-element'
 
+/**
+ * `<flip-reel>` — the complete widget: card rail plus full-screen player.
+ * Configure via the `options` property or via element attributes (`feed`,
+ * `locale`, `brand`, ...). Emits `flip-reel:*` events on itself.
+ */
 @customElement('flip-reel')
 export class FlipReelReels extends LitElement {
+  /** Widget configuration; attribute-based options are read when omitted. */
   @property({ attribute: false }) options?: FlipReelOptions
 
   @state() private widget?: WidgetController

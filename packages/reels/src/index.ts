@@ -38,6 +38,7 @@ export {
   FLIP_REEL_VERSION,
 } from '@flipatic/flip-reel-core'
 
+/** Creates a `<flip-reel>` element with the given options and appends it to `target`. */
 export function mount(target: HTMLElement, options: FlipReelOptions): FlipReelReels {
   const element = document.createElement('flip-reel') as FlipReelReels
   element.options = options

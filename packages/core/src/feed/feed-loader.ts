@@ -3,11 +3,18 @@ import { normalizeFeed } from './feed-normalizer'
 import type { Category, Feed } from '../types/story'
 import type { FeedAdapter, FeedSource } from '../types/adapters'
 
+/** Options for {@link DefaultFeedAdapter}. */
 export interface FeedLoaderOptions {
+  /** Localized label for the "all" category. */
   allLabel: string
+  /** Explicit categories overriding feed-provided or derived ones. */
   categories?: Category[]
 }
 
+/**
+ * Built-in {@link FeedAdapter}: fetches URL sources without credentials,
+ * invokes function sources, and normalizes the result via {@link normalizeFeed}.
+ */
 export class DefaultFeedAdapter implements FeedAdapter {
   constructor(private readonly options: FeedLoaderOptions) {}
 

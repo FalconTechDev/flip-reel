@@ -1,6 +1,7 @@
 import { LitElement, css, html, nothing, type PropertyValues } from 'lit'
 import { customElement, property, query, state } from 'lit/decorators.js'
 
+/** `<flip-reel-blurred-background>` — blurred poster backdrop behind the desktop player. */
 @customElement('flip-reel-blurred-background')
 export class FlipReelBlurredBackground extends LitElement {
   @property() poster?: string

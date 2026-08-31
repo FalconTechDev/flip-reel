@@ -1,15 +1,21 @@
 import { MediaScheduler } from './media-scheduler'
 
+/** Version of this FlipReel build. */
 export const FLIP_REEL_VERSION = '0.1.2'
 
 const NAMESPACE = '__FLIP_REEL__'
 
+/** Page-global state shared by every widget instance on the page. */
 export interface GlobalRuntime {
   version: string
   scheduler: MediaScheduler
   instances: Set<string>
 }
 
+/**
+ * Returns the page-global runtime stored on `globalThis`, creating it on first
+ * use. Warns when another FlipReel version already runs on the page.
+ */
 export function getRuntime(): GlobalRuntime {
   const root = globalThis as Record<string, unknown>
   const existing = root[NAMESPACE] as GlobalRuntime | undefined

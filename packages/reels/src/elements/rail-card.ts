@@ -13,6 +13,10 @@ import {
 } from '@flipatic/flip-reel-core'
 import { VideoLeaseController } from '../controllers/video-lease-controller'
 
+/**
+ * `<flip-reel-rail-card>` — one story card in the rail, with hover video
+ * preview. Emits an `open` event with the story id when activated.
+ */
 @customElement('flip-reel-rail-card')
 export class FlipReelRailCard extends LitElement {
   @property({ attribute: false }) story!: Story

@@ -4,6 +4,11 @@ import type { AdAdapter, AdHandle } from '@flipatic/flip-reel-core'
 import type { Messages } from '../i18n/i18n'
 import { icon } from '../icons/icons'
 
+/**
+ * `<flip-reel-ad-slide>` — hosts one ad creative during an ad break: asks the
+ * {@link AdAdapter} for a creative, shows the countdown/skip UI, and emits
+ * `ad-impression`, `ad-nofill`, and `ad-skip` events.
+ */
 @customElement('flip-reel-ad-slide')
 export class FlipReelAdSlide extends LitElement {
   @property({ attribute: false }) adapter?: AdAdapter

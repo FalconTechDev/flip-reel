@@ -1,5 +1,6 @@
 import type { StateStore } from '../types/adapters'
 
+/** In-memory {@link StateStore}; state lives only as long as the page. */
 export class MemoryStateStore implements StateStore {
   private readonly entries = new Map<string, unknown>()
 

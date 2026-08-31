@@ -7,12 +7,18 @@ import type { StateStore } from '../types/adapters'
 import type { Story } from '../types/story'
 import type { PlayerState } from './player-types'
 
+/** Dependencies injected into {@link PlayerController}. */
 export interface PlayerControllerDeps {
   config: ResolvedConfig
   store: StateStore
   events: EventBus<FlipReelEventMap>
 }
 
+/**
+ * Headless state machine of the full-screen player: navigation, category
+ * filtering, pause/mute, likes, and ad cadence. Emits `flip-reel:*` events on
+ * the injected bus and publishes {@link PlayerState} snapshots to subscribers.
+ */
 export class PlayerController {
   private readonly ad: AdSession
   private readonly liked = new Set<string>()
@@ -48,6 +54,7 @@ export class PlayerController {
     this.notify()
   }
 
+  /** Subscribes to state snapshots, receiving the current one immediately. */
   subscribe(listener: (state: PlayerState) => void): () => void {
     this.listeners.add(listener)
     listener(this.snapshot())
@@ -56,6 +63,7 @@ export class PlayerController {
     }
   }
 
+  /** Opens the player on a story, optionally switching category first. */
   open(storyId: string, categoryId?: string): void {
     if (categoryId) this.categoryId = categoryId
     this.rebuild()
@@ -83,10 +91,12 @@ export class PlayerController {
     this.registerView(true)
   }
 
+  /** Asks to make the given slide active, e.g. from the arrow buttons. */
   requestIndex(index: number): void {
     this.advanceTo(index)
   }
 
+  /** Reports that a user scroll settled on the given slide. */
   notifyLanded(index: number): void {
     this.advanceTo(index)
   }
@@ -143,6 +153,10 @@ export class PlayerController {
     this.deps.config.callbacks.onShare?.(story.id)
   }
 
+  /**
+   * Emits `flip-reel:readmore` for the active story. Returns `false` when a
+   * listener prevented the default, i.e. the link must not be followed.
+   */
   readMore(): boolean {
     const story = this.currentStory()
     if (!story) return true
@@ -154,6 +168,7 @@ export class PlayerController {
     return allowed
   }
 
+  /** Advances the ad countdown; call once per animation frame while open. */
   tick(deltaMs: number): void {
     if (!this.adActive) return
     const secondsBefore = Math.ceil(this.ad.remainingMs / 1000)
@@ -182,6 +197,7 @@ export class PlayerController {
     this.resolveAd()
   }
 
+  /** Returns the current {@link PlayerState}. */
   snapshot(): PlayerState {
     return {
       open: this.isOpen,

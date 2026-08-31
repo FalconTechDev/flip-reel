@@ -1,3 +1,4 @@
+/** All user-facing UI strings of the widget, per locale. */
 export interface Messages {
   railHeading: string
   categoryAll: string
