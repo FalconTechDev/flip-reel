@@ -28,6 +28,9 @@ export type {
   FeedAdapter,
   StateStore,
   FlipReelEventMap,
+  FlipReelEventName,
+  FlipReelEvent,
+  FlipReelErrorScope,
 } from '@flipatic/flip-reel-core'
 export {
   MemoryStateStore,

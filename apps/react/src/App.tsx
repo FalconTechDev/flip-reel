@@ -22,8 +22,8 @@ export function App() {
         </p>
         <Reels
           options={options}
-          onOpen={(event) => console.info('[react] open', (event as CustomEvent).detail)}
-          onShare={(event) => console.info('[react] share', (event as CustomEvent).detail)}
+          onOpen={(event) => console.info('[react] open', event.detail.storyId, event.detail.index)}
+          onShare={(event) => console.info('[react] share', event.detail.storyId)}
         />
       </main>
     </>

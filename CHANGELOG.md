@@ -5,6 +5,13 @@ All notable changes to this project are documented here. The format follows
 
 ## Unreleased
 
+### Added
+
+- Typed DOM events: `addEventListener('flip-reel:*')` now infers `CustomEvent` details via a
+  global `HTMLElementEventMap` augmentation; new `FlipReelEvent` and `FlipReelErrorScope` types.
+- React binding: typed `event.detail` on all event props; new `onPlay`, `onPause`,
+  `onAdRequested`, `onAdSkipped`, `onAdEmpty` props.
+
 ### Changed
 
 - React binding: `onError` prop renamed to `onReelsError` — it clashed with React's native
