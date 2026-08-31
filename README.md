@@ -73,6 +73,12 @@ flip-reel {
 }
 ```
 
+## Documentation
+
+- [API reference](docs/reference) — options, events, elements, theming, adapters, feed
+  format, core API
+- [Architecture](docs/architecture.md) — design decisions
+
 ## Develop
 
 ```bash

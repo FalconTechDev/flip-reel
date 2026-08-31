@@ -8,6 +8,8 @@ All notable changes to this project are documented here. The format follows
 ### Added
 
 - TSDoc on the entire public API of every package.
+- API reference in `docs/reference`: options, events, elements, theming, adapters, feed
+  format, core API.
 - Typed DOM events: `addEventListener('flip-reel:*')` now infers `CustomEvent` details via a
   global `HTMLElementEventMap` augmentation; new `FlipReelEvent` and `FlipReelErrorScope` types.
 - React binding: typed `event.detail` on all event props; new `onPlay`, `onPause`,
