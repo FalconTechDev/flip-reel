@@ -5,6 +5,11 @@ All notable changes to this project are documented here. The format follows
 
 ## Unreleased
 
+### Changed
+
+- React binding: `onError` prop renamed to `onReelsError` — it clashed with React's native
+  `onError` handler.
+
 ### Fixed
 
 - `event.preventDefault()` on `flip-reel:readmore` (React: `onReadMore`) cancels opening the

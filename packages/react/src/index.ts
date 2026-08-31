@@ -14,7 +14,7 @@ export const Reels = createComponent({
     onLike: 'flip-reel:like',
     onShare: 'flip-reel:share',
     onReadMore: 'flip-reel:readmore',
-    onError: 'flip-reel:error',
+    onReelsError: 'flip-reel:error',
     onAdImpression: 'flip-reel:ad:impression',
     onAdCompleted: 'flip-reel:ad:completed',
   },
