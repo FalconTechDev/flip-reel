@@ -156,3 +156,34 @@ describe('PlayerController ad cadence', () => {
     expect(controller.snapshot().activeIndex).toBe(1)
   })
 })
+
+describe('PlayerController read more', () => {
+  function buildWithBus() {
+    const stories = videoStories(2)
+    const events = new EventBus<FlipReelEventMap>()
+    const controller = new PlayerController({
+      config: resolveConfig({ feed: { stories } }),
+      store: new MemoryStateStore(),
+      events,
+    })
+    controller.setStories(stories)
+    controller.open('s0')
+    return { controller, events }
+  }
+
+  it('emits the readmore event with the story link and allows by default', () => {
+    const { controller, events } = buildWithBus()
+    let payload: FlipReelEventMap['flip-reel:readmore'] | undefined
+    events.on('flip-reel:readmore', (detail) => {
+      payload = detail
+    })
+    expect(controller.readMore()).toBe(true)
+    expect(payload).toEqual({ storyId: 's0', link: undefined })
+  })
+
+  it('reports cancellation when a listener prevents the default', () => {
+    const { controller, events } = buildWithBus()
+    events.on('flip-reel:readmore', () => false)
+    expect(controller.readMore()).toBe(false)
+  })
+})

@@ -21,7 +21,7 @@ export interface PlayerHandlers {
   toggleLike: (storyId: string) => void
   onMediaTap: (storyId: string, event: Event) => void
   share: (storyId: string) => void
-  readMore: () => void
+  readMore: (event: Event) => void
   onVideoLoaded: (event: Event) => void
   onVideoTime: (event: Event) => void
   onVideoEnded: (event: Event) => void

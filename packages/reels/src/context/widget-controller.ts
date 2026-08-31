@@ -37,6 +37,8 @@ const FORWARDED_EVENTS: FlipReelEventName[] = [
   'flip-reel:ad:empty',
 ]
 
+const CANCELABLE_EVENTS = new Set<FlipReelEventName>(['flip-reel:readmore'])
+
 export class WidgetController {
   readonly config: ResolvedConfig
   readonly events = new EventBus<FlipReelEventMap>()
@@ -109,9 +111,16 @@ export class WidgetController {
 
   private forwardDomEvents(): void {
     for (const name of FORWARDED_EVENTS) {
-      const off = this.events.on(name, (detail) => {
-        this.host.dispatchEvent(new CustomEvent(name, { detail, bubbles: true, composed: true }))
-      })
+      const off = this.events.on(name, (detail) =>
+        this.host.dispatchEvent(
+          new CustomEvent(name, {
+            detail,
+            bubbles: true,
+            composed: true,
+            cancelable: CANCELABLE_EVENTS.has(name),
+          }),
+        ),
+      )
       this.unbind.push(off)
     }
   }

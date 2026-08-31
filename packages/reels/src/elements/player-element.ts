@@ -440,7 +440,9 @@ export class FlipReelPlayer extends LitElement {
     toggleLike: (storyId) => this.likeFromTap(storyId),
     onMediaTap: (storyId, event) => this.onMediaTap(storyId, event),
     share: (storyId) => this.controller?.share(storyId),
-    readMore: () => this.controller?.readMore(),
+    readMore: (event) => {
+      if (this.controller?.readMore() === false) event.preventDefault()
+    },
     onVideoLoaded: (event) => this.onVideoLoaded(event),
     onVideoTime: (event) => this.onVideoTime(event),
     onVideoEnded: (event) => this.onVideoEnded(event),

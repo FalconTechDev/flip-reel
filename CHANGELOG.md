@@ -3,6 +3,13 @@
 All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the project adheres to [SemVer](https://semver.org/).
 
+## Unreleased
+
+### Fixed
+
+- `event.preventDefault()` on `flip-reel:readmore` (React: `onReadMore`) cancels opening the
+  story link.
+
 ## 0.1.2
 
 ### Fixed

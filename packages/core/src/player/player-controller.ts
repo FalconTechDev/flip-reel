@@ -143,11 +143,15 @@ export class PlayerController {
     this.deps.config.callbacks.onShare?.(story.id)
   }
 
-  readMore(): void {
+  readMore(): boolean {
     const story = this.currentStory()
-    if (!story) return
-    this.deps.events.emit('flip-reel:readmore', { storyId: story.id, link: story.link })
+    if (!story) return true
+    const allowed = this.deps.events.emitCancelable('flip-reel:readmore', {
+      storyId: story.id,
+      link: story.link,
+    })
     this.deps.config.callbacks.onReadMore?.(story.id, story.link)
+    return allowed
   }
 
   tick(deltaMs: number): void {
