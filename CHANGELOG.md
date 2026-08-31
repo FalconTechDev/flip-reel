@@ -8,6 +8,8 @@ All notable changes to this project are documented here. The format follows
 ### Added
 
 - Per-package READMEs: purpose, installation, minimal example.
+- `llms.txt` and a ready-made Claude Code skill (`.claude/skills/flip-reel`) for AI-assisted
+  integration.
 - TSDoc on the entire public API of every package.
 - API reference in `docs/reference`: options, events, elements, theming, adapters, feed
   format, core API.

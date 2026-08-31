@@ -1,0 +1,44 @@
+# FlipReel
+
+> Open-source, embeddable stories/reels widget for publishers. Lit web components with Shadow
+> DOM isolation on top of a headless TypeScript core; drops into any site (plain HTML,
+> WordPress, React, Vue, Nuxt, Svelte), hosts arbitrary ad code through a stable adapter
+> contract, and stays light and Core-Web-Vitals-safe. Apache-2.0 (the "FlipReel" name is
+> trademarked).
+
+Key facts:
+
+- Embed with `<flip-reel feed="...">` (attributes) or `mount(target, options)` (programmatic);
+  React bindings live in `@flipatic/flip-reel-react`.
+- All events are namespaced `flip-reel:*` `CustomEvent`s with typed `detail`
+  (`FlipReelEventMap`); `flip-reel:readmore` is cancelable — `preventDefault()` stops the
+  link navigation. In React, widget errors arrive on `onReelsError` (not `onError`).
+- Styling only via `--flip-reel-*` CSS custom properties — Shadow DOM blocks host CSS.
+- Ads are view-gated pre-roll overlays (an ad occupies every Nth viewed slide) behind the
+  `AdAdapter` contract; `@flipatic/flip-reel-ad-gpt` is the Google Ad Manager reference.
+
+## Docs
+
+- [README](README.md): overview, installation, quick start
+- [Architecture](docs/architecture.md): locked design decisions
+- [Reference index](docs/reference/README.md): all reference pages
+- [Options](docs/reference/options.md): every `FlipReelOptions` field with defaults
+- [Events](docs/reference/events.md): event names, payloads, React props, callbacks
+- [Elements](docs/reference/elements.md): custom elements, attributes, `mount()`, React
+- [Theming](docs/reference/theming.md): CSS custom properties and design tokens
+- [Adapters](docs/reference/adapters.md): `FeedAdapter`, `AdAdapter`, `StateStore`, GPT
+- [Feed format](docs/reference/feed.md): JSON contract and validation rules
+- [Core API](docs/reference/core-api.md): headless engine (`PlayerController`, `EventBus`, ...)
+
+## Packages
+
+- [@flipatic/flip-reel](packages/reels/README.md): the widget (Lit web components)
+- [@flipatic/flip-reel-core](packages/core/README.md): headless engine
+- [@flipatic/flip-reel-react](packages/react/README.md): React bindings
+- [@flipatic/flip-reel-ad-gpt](packages/ad-gpt/README.md): Google Ad Manager ad adapter
+
+## Optional
+
+- [Changelog](CHANGELOG.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)

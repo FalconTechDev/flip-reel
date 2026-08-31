@@ -78,6 +78,8 @@ flip-reel {
 - [API reference](docs/reference) — options, events, elements, theming, adapters, feed
   format, core API
 - [Architecture](docs/architecture.md) — design decisions
+- [llms.txt](llms.txt) — AI-friendly index of the docs; a Claude Code integration skill ships
+  in `.claude/skills/flip-reel`
 
 ## Develop
 
