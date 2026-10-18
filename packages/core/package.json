@@ -1,6 +1,6 @@
 {
   "name": "@flipatic/flip-reel-core",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Headless engine for the FlipReel widget",
   "license": "Apache-2.0",
   "type": "module",

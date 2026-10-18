@@ -1,7 +1,7 @@
 import { MediaScheduler } from './media-scheduler'
 
 /** Version of this FlipReel build. */
-export const FLIP_REEL_VERSION = '0.2.0'
+export const FLIP_REEL_VERSION = '0.2.1'
 
 const NAMESPACE = '__FLIP_REEL__'
 
