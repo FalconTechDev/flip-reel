@@ -3,6 +3,13 @@
 All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the project adheres to [SemVer](https://semver.org/).
 
+## 0.2.1
+
+### Changed
+
+- Repository moved to [Flipatic/flip-reel](https://github.com/Flipatic/flip-reel); package
+  `repository`, `homepage` and `bugs` links updated.
+
 ## 0.2.0
 
 ### Added
