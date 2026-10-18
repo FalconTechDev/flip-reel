@@ -1,6 +1,6 @@
 # @flipatic/flip-reel
 
-The embeddable [FlipReel](https://github.com/autentika/flip-reel) stories/reels widget for
+The embeddable [FlipReel](https://github.com/Flipatic/flip-reel) stories/reels widget for
 publishers: Lit web components (`<flip-reel>`, `<flip-reel-rail>`, `<flip-reel-player>`) with
 Shadow DOM style isolation, design tokens, `pl`/`en` i18n, and view-gated ad breaks behind a
 stable adapter contract.

@@ -1,7 +1,7 @@
 # @flipatic/flip-reel-ad-gpt
 
 Reference Google Ad Manager (GPT) ad adapter for the
-[FlipReel](https://github.com/autentika/flip-reel) widget. Loads `gpt.js` on demand, renders
+[FlipReel](https://github.com/Flipatic/flip-reel) widget. Loads `gpt.js` on demand, renders
 one slot per ad break, and reports empty responses as no-fill so the widget dismisses the
 break.
 

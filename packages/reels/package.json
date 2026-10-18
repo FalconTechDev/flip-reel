@@ -35,11 +35,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/autentika/flip-reel.git",
+    "url": "git+https://github.com/Flipatic/flip-reel.git",
     "directory": "packages/reels"
   },
-  "homepage": "https://github.com/autentika/flip-reel#readme",
-  "bugs": "https://github.com/autentika/flip-reel/issues",
+  "homepage": "https://github.com/Flipatic/flip-reel#readme",
+  "bugs": "https://github.com/Flipatic/flip-reel/issues",
   "author": "Autentika",
   "keywords": [
     "reels",

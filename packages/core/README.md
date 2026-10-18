@@ -1,6 +1,6 @@
 # @flipatic/flip-reel-core
 
-Headless engine of the [FlipReel](https://github.com/autentika/flip-reel) widget: config
+Headless engine of the [FlipReel](https://github.com/Flipatic/flip-reel) widget: config
 resolution, feed loading and normalization, the player and ad state machines, the page-global
 `MediaScheduler`, and the state-store contract. No DOM rendering — the UI lives in
 [`@flipatic/flip-reel`](../reels).

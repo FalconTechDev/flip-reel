@@ -1,6 +1,6 @@
 # @flipatic/flip-reel-react
 
-React bindings for the [FlipReel](https://github.com/autentika/flip-reel) widget via
+React bindings for the [FlipReel](https://github.com/Flipatic/flip-reel) widget via
 `@lit/react`: `Reels`, `Rail`, and `Player` components with typed event props.
 
 > Not published to npm yet — the web component in
