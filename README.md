@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="apps/demo/public/brand/flip-reel-logo.svg" alt="FlipReel" height="56" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/flip-reel-wordmark-dark.svg" />
+    <img src=".github/assets/flip-reel-wordmark.svg" alt="FlipReel" height="56" />
+  </picture>
 </p>
 
 <p align="center">
@@ -21,8 +24,7 @@
   <a href="https://github.com/Flipatic/flip-reel/discussions">Discussions</a>
 </p>
 
-<!-- TODO(owner): record a 6-10 s GIF or MP4 of the demo (rail hover -> open player -> swipe -> ad break), save it as .github/assets/flip-reel-demo.gif (< 5 MB) and uncomment the line below. -->
-<!-- <p align="center"><img src=".github/assets/flip-reel-demo.gif" alt="FlipReel rail and full-screen player" width="720"></p> -->
+<p align="center"><img src=".github/assets/flip-reel-demo.gif" alt="FlipReel rail and full-screen player" width="720"></p>
 
 Your short videos should not live only on social media. FlipReel puts a carousel of vertical
 videos on your homepage, section pages or inside articles and opens them in a full-screen,
